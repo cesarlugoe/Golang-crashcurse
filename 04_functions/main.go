@@ -10,7 +10,15 @@ func greetings(name string) string {
 func getSum(num1 int, num2 int) int {
 	return num1 + num2
 }
+
+func say(comment string, name string) string {
+	return name + " says " + comment
+}
 func main() {
-	fmt.Println(greetings("Cesar"))
-	fmt.Println(getSum(3, 5))
+	myName := "Cesar"
+	sumValueA, sumValueB := 3, 5
+
+	fmt.Println(greetings(myName))
+	fmt.Println(getSum(sumValueA, sumValueB))
+	fmt.Println(say(myName, "'Que mundos'"))
 }

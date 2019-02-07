@@ -13,11 +13,11 @@ func main() {
 	fmt.Printf("%T\n", a) //%T refers to the type of value of the variable
 	fmt.Printf("%T\n", b)
 
-	// to get the value that b points to use *
+	// to get the value that 'b' points to use *
 
 	fmt.Println(*b)
 
-	//change value of a with the pointer of b
+	//change value of 'a' with the pointer of 'b'
 
 	*b = 10
 

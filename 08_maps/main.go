@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	//define map
+	//define empty map
 	newMap := make(map[string]string)
 
 	//assign key-values
