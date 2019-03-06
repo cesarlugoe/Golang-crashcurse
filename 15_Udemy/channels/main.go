@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 // example of checking status of different webpages
@@ -35,14 +36,25 @@ func main() {
 
 	//infinite loop will only be execute internal code when receiving new
 	// response from checklink.
-	for {
+
+	//for  ** Equivalent refactor for syntax
+	for l := range c { //**
 		// '<-c' is a blocking code line, it'll make the program stop, until
 		// it recieves the message from the channel to print, so when the
 		// first go routine completes and sends the message from the channel
 		// this for loop calls checklink again with recieving channel parameter
 		//and waits for the next message.
 
-		go checkLink(<-c, c)
+		//with this function literal (anonymous) we can pause the checking of the cha
+		//nnel message without blocking the for loop.
+		go func(link string) { // we pass link from outer func because the  value of link in outer func can change.
+			// Pause the execution of checking channel message for 5 seconds so not
+			// to spam webpages with requests.
+			time.Sleep(5 * time.Second)
+
+			//go checkLink(<-c, c)**  Equivalent refactor for syntax
+			checkLink(link, c) //**
+		}(l) // this extra parents is to call the function literal (anonymous function)
 	}
 
 }
